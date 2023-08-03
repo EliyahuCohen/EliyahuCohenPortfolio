@@ -68,7 +68,7 @@ export default function Intro() {
         <Link
           title="Contact me title"
           href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none   hover:bg-black/[0.85]  hover:border-black active:scale-95 transition"
+          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none   hover:bg-black/[0.85]  hover:border-black active:scale-95 transition "
           onClick={() => {}}
         >
           Contact me here{" "}
@@ -76,7 +76,7 @@ export default function Intro() {
         </Link>
 
         <a
-          className="group hover:bg-black hover:text-white bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none active:scale-95 transition cursor-pointer  border-black  dark:bg-white/10"
+          className="group hover:bg-black hover:text-white bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none active:scale-95 transition cursor-pointer  border-black  dark:bg-white/10 dark:border-2 "
           href="/CV.pdf"
           title="Download cv  title"
           download
@@ -91,7 +91,7 @@ export default function Intro() {
           href="https://www.linkedin.com/in/eliyahu-cohen-b3499716a/?originalSubdomain=il"
           target="_blank"
         >
-          <BsLinkedin />
+          <BsLinkedin className="dark:text-black" />
         </a>
 
         <a
@@ -100,7 +100,7 @@ export default function Intro() {
           target="_blank"
           title="personal github page"
         >
-          <FaGithubSquare />
+          <FaGithubSquare className="dark:text-black" />
         </a>
       </motion.div>
     </section>
