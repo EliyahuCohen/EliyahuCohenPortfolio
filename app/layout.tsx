@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Eliyahu Cohen | Personal Portfolio",
   description:
     "Eliyahu Cohen personal portfolio ,Fullstack Developer,Developer, Programmer, React,Next.js,Typescript,Node.js,MongoDB,Express, and much more",
+  verification: {
+    google: "etLGIi0IZrGFwJHWbjMxL-jpyNsO2rnnZftDlQTH8nA",
+  },
 };
 
 export default function RootLayout({
