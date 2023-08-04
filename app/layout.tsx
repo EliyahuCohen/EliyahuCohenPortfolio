@@ -14,6 +14,23 @@ export const metadata: Metadata = {
   verification: {
     google: "etLGIi0IZrGFwJHWbjMxL-jpyNsO2rnnZftDlQTH8nA",
   },
+  keywords: [
+    "Eliyahu Cohen",
+    "Eliyahu Cohen Tarab",
+    "Web Developer",
+    "Fullstack Developer",
+    "React",
+    "Next.js",
+    "Typescript",
+    "Node.js",
+    "MongoDB",
+  ],
+  authors: [
+    {
+      name: "Eliyahu Cohen",
+      url: "https://eliyahu-cohen-portfolio.vercel.app",
+    },
+  ],
 };
 
 export default function RootLayout({

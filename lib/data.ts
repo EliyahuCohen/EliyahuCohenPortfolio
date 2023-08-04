@@ -6,6 +6,7 @@ import Meta from "@/public/meta.webp";
 import Music from "@/public/music.webp";
 import EC from "@/public/ec.webp";
 import Doc from "@/public/doc.jpg";
+import Word from "@/public/wordle.png";
 
 export const links = [
   {
@@ -60,7 +61,7 @@ export const projectsData = [
   {
     title: "HealthCare App",
     description:
-      "Health care app with all of the feauters, from real time messages and videos, to booking appointments ,prescriptions and more ",
+      "Health care app with all of the features, from real time messages and video calls, to booking appointments, prescriptions ,Admin mode and more ",
     tags: [
       "React",
       "Typescript",
@@ -75,12 +76,16 @@ export const projectsData = [
       "Nodemailer",
     ],
     imageUrl: Doc,
+    github: "https://github.com/EliyahuCohen/Doctor-Patient",
+    liveDemo: "https://doctor-patinet.netlify.app",
   },
   {
     title: "Modern UI/UX",
     description: "A nice little project of modern UI/UX using Next.js",
     tags: ["React", "Next.js", "Sanity.io", "Tailwind", "Framer Motion"],
     imageUrl: Meta,
+    github: "https://github.com/EliyahuCohen/METAVERCE-project-UI-UX",
+    liveDemo: "https://metaverce-project-ui-ux.vercel.app/",
   },
   {
     title: "Music App",
@@ -88,13 +93,33 @@ export const projectsData = [
       "A personal project build using React.js and RapidAPI Shazam Core API ",
     tags: ["React", "Javascript", "Tailwind", "Redux", "Framer Motion"],
     imageUrl: Music,
+    github: "https://github.com/EliyahuCohen/-Lyriks-Music-App",
+    liveDemo: "https://eliyahu-music-app.netlify.app/",
   },
   {
     title: "E-commerce App",
     description:
-      "A simple public web app for a store and products, menagment and cart .",
+      "A simple public web app for a store and products, management and cart .",
     tags: ["React", "Next.js", "Sanity.io", "Sass", "Framer Motion"],
     imageUrl: EC,
+    github: "https://github.com/EliyahuCohen/E-commerce",
+    liveDemo: "",
+  },
+  {
+    title: "Wordle Game",
+    description:
+      "A nice public (cloned) web app  for the popular game Wordle  .",
+    tags: [
+      "React",
+      "Javascript",
+      "Custom Hooks",
+      "Context",
+      "CSS",
+      "Framer Motion",
+    ],
+    imageUrl: Word,
+    github: "https://github.com/EliyahuCohen/Wordle-Game",
+    liveDemo: "https://eliyahu-wordle-game.netlify.app/",
   },
 ] as const;
 

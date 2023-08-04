@@ -3,6 +3,8 @@ import SectionHeading from "./SectionHeading";
 import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { BsLink45Deg } from "react-icons/bs";
+import { AiOutlineGithub } from "react-icons/ai";
 
 export type ProjectType = (typeof projectsData)[number];
 export type showProps = {
@@ -39,9 +41,34 @@ export default function Projects({ show, limit }: showProps) {
   );
 }
 
-function Project({ title, description, tags, imageUrl }: ProjectType) {
+function Project({
+  title,
+  description,
+  tags,
+  imageUrl,
+  github,
+  liveDemo,
+}: ProjectType) {
   return (
     <section className="grid gap-5 md:text-left text-center md:grid-cols-2 items-center grid-cols-1 p-3 bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 relative rounded-md ">
+      <div className="absolute top-0 right-0 p-4 flex gap-1">
+        {liveDemo ? (
+          <Link target="_blank" href={liveDemo}>
+            <BsLink45Deg
+              className="hover:text-gray-500 hover:cursor-pointer"
+              title="live site link"
+            />
+          </Link>
+        ) : null}
+        {github ? (
+          <Link target="_blank" href={github}>
+            <AiOutlineGithub
+              className="hover:text-gray-500 hover:cursor-pointer"
+              title="github link"
+            />
+          </Link>
+        ) : null}
+      </div>
       <div className="py-4 px-5 sm:pl-10 sm:pr-2 sm:pt-10  ">
         <h3 className="text-2xl font-semibold">{title}</h3>
         <p className="mt-2 leading-relaxed text-gray-700">{description}</p>
