@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   keywords: [
     "Eliyahu Cohen",
     "Eliyahu Cohen Tarab",
+    "אליהו כהן",
+    "אליהו כהן Fullstack",
+    "אליהו כהן Developer",
+    "Eli Cohen",
     "Web Developer",
     "Fullstack Developer",
     "React",
