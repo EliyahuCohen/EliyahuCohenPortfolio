@@ -137,7 +137,7 @@ export const skillsData = [
   "Prisma",
   "MongoDB",
   "Docker",
-  "GitLan",
+  "GitLab",
   "Redux",
   "Sass",
   "Sanity.io",
