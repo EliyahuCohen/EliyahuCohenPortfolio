@@ -77,7 +77,7 @@ export default function Intro() {
 
         <a
           className="group hover:bg-black hover:text-white bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none active:scale-95 transition cursor-pointer  border-black  dark:bg-white/10 dark:border-2 "
-          href="/CV.pdf"
+          href="/EliyahuCohenResume.pdf"
           title="Download cv  title"
           download
         >
