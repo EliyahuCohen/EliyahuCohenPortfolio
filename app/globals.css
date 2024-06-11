@@ -12,3 +12,19 @@ html {
 .borderBlack {
   @apply border border-black/10;
 }
+.animate-gradient {
+  background-size: 300%;
+  animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

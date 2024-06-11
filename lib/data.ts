@@ -123,8 +123,7 @@ export const projectsData = [
   },
   {
     title: "Wordle Game",
-    description:
-      "A nice public (cloned) web app for the popular game Wordle.",
+    description: "A nice public (cloned) web app for the popular game Wordle.",
     tags: [
       "React",
       "Javascript",
@@ -149,7 +148,7 @@ export const skillsData = [
   { name: "Node.js", color: "hover:text-custom-nodejs" },
   { name: "Git", color: "hover:text-custom-git" },
   { name: "GitHub", color: "hover:text-custom-github" },
-  { name: "Tailwind", color: "hover:text-custom-tailwind" },
+  { name: "Tailwind CSS", color: "hover:text-custom-tailwind" },
   { name: "Prisma", color: "hover:text-custom-prisma" },
   { name: "MongoDB", color: "hover:text-custom-mongodb" },
   { name: "Docker", color: "hover:text-custom-docker" },
@@ -171,7 +170,6 @@ export const skillsData = [
   { name: "C#", color: "hover:text-custom-csharp" },
   { name: ".NET", color: "hover:text-custom-dotnet" },
   { name: "Framer Motion", color: "hover:text-custom-framermotion" },
- 
 ] as const;
 
 export const resumeData = {

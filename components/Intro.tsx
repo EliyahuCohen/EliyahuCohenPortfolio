@@ -3,7 +3,7 @@ import Image from "next/image";
 import Logo from "@/public/logo.png";
 import { motion } from "framer-motion";
 import { FaGithubSquare } from "react-icons/fa";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { BsArrowRight, BsLinkedin, BsWhatsapp } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import Link from "next/link";
 
@@ -51,12 +51,15 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, {"I'm"} Eliyahu.</span> {"I'm"} a{" "}
-        <span className="font-bold">Full-Stack Developer</span> with{" "}
-        <span className="font-bold">2 years</span> of experience. I enjoy
-        building <span className="italic">sites & apps</span>. My focus is{" "}
-        <span className="underline">React (Next.js)</span>.
+        <span className="font-bold">Hello there!</span> {"I'm"} Eliyahu Cohen, a
+        passionate Full-Stack Developer. With{" "}
+        <span className="font-bold">over 3.5 years</span> of experience,
+        {"I've "}
+        immersed myself in the dynamic world of software development, crafting
+        innovative solutions and pushing boundaries. {"Let's"} collaborate and
+        create remarkable software together!
       </motion.h1>
+
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
@@ -75,33 +78,33 @@ export default function Intro() {
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
 
-        <a
-          className="group hover:bg-black hover:text-white bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none active:scale-95 transition cursor-pointer  border-black  dark:bg-white/10 dark:border-2 "
-          href="/EliyahuCohenResume.pdf"
-          title="Download cv  title"
-          download
-        >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:text-white transition" />
-        </a>
+        <div className="flex gap-2 items-center my-5 md:my-0 ">
+          <a
+            title="linkedin profile site "
+            className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.05] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+            href="https://www.linkedin.com/in/eliyahu-cohen-b3499716a/?originalSubdomain=il"
+            target="_blank"
+          >
+            <BsLinkedin className="dark:text-black" />
+          </a>
 
-        <a
-          title="linkedin profile site "
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.05] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/eliyahu-cohen-b3499716a/?originalSubdomain=il"
-          target="_blank"
-        >
-          <BsLinkedin className="dark:text-black" />
-        </a>
-
-        <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.05] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://github.com/EliyahuCohen"
-          target="_blank"
-          title="personal github page"
-        >
-          <FaGithubSquare className="dark:text-black" />
-        </a>
+          <a
+            className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.05] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+            href="https://github.com/EliyahuCohen"
+            target="_blank"
+            title="personal github page"
+          >
+            <FaGithubSquare className="dark:text-black" />
+          </a>
+          <a
+            className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.05] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+            href="https://api.whatsapp.com/send?phone=972585669183"
+            target="_blank"
+            title="personal whatsapp number"
+          >
+            <BsWhatsapp className="dark:text-black" />
+          </a>
+        </div>
       </motion.div>
     </section>
   );

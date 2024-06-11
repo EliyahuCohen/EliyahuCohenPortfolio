@@ -7,11 +7,9 @@ import { skillsData } from "@/lib/data";
 const fadeInAnimationVarient = {
   initial: {
     opacity: 0,
-    y: 50,
   },
   animate: (index: number) => ({
     opacity: 1,
-    y: 0,
     transition: {
       delay: 0.05 * index,
       duration: 0.3,
@@ -20,8 +18,8 @@ const fadeInAnimationVarient = {
 };
 
 export default function Skills() {
-  function getColor(data:string){
-    return data.toString()
+  function getColor(data: string) {
+    return data.toString();
   }
   return (
     <section id="skills">
@@ -34,7 +32,9 @@ export default function Skills() {
           {skillsData.map((skill, index) => (
             <motion.li
               variants={fadeInAnimationVarient}
-              className={`bg-white border border-black/[0.1] rounded-xl px-5 py-3 cursor-pointer duration-300 transition-all hover:font-semibold ${getColor(skill.color)}`}
+              className={`bg-white border border-black/[0.1] rounded-xl px-5 py-3 cursor-pointer duration-300 transition-all hover:font-semibold ${getColor(
+                skill.color
+              )}`}
               key={skill.name}
               initial="initial"
               transition={{ duration: 0.3 }}

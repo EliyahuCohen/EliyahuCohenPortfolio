@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Eliyahu Cohen | Personal Portfolio",
   description:
-    "Eliyahu Cohen personal portfolio ,Fullstack Developer,Developer, Programmer, React,Next.js,Typescript,Node.js,MongoDB,Express, and much more",
+    "Welcome to the personal portfolio of Eliyahu Cohen, a Full-Stack Developer proficient in React, Next.js, Typescript, Node.js, MongoDB, Express, and more. Explore innovative web development projects and software engineering solutions.",
   verification: {
     google: "etLGIi0IZrGFwJHWbjMxL-jpyNsO2rnnZftDlQTH8nA",
   },
@@ -22,12 +22,17 @@ export const metadata: Metadata = {
     "אליהו כהן Developer",
     "Eli Cohen",
     "Web Developer",
-    "Fullstack Developer",
+    "Full-Stack Developer",
     "React",
     "Next.js",
     "Typescript",
     "Node.js",
     "MongoDB",
+    "Express",
+    "JavaScript",
+    "Software Engineer",
+    "Technology Solutions",
+    "Innovative Development",
   ],
   authors: [
     {
