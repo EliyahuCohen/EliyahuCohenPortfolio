@@ -93,7 +93,7 @@ export const projectsData = [
     ],
     imageUrl: Doc,
     github: "https://github.com/EliyahuCohen/Doctor-Patient",
-    liveDemo: "https://doctor-patinet.netlify.app",
+    liveDemo: "",
   },
   {
     title: "Modern UI/UX",
@@ -110,7 +110,7 @@ export const projectsData = [
     tags: ["React", "Javascript", "Tailwind", "Redux", "Framer Motion"],
     imageUrl: Music,
     github: "https://github.com/EliyahuCohen/-Lyriks-Music-App",
-    liveDemo: "https://eliyahu-music-app.netlify.app/",
+    liveDemo: "",
   },
   {
     title: "E-commerce App",

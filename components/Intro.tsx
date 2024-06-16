@@ -106,7 +106,14 @@ export default function Intro() {
           </a>
         </div>
       </motion.div>
-      <div className="mx-auto flex-col flex w-full items-center justify-center mt-5">
+      <motion.div
+        className="mx-auto flex-col flex w-full items-center justify-center mt-5"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.7,
+        }}
+      >
         <Link
           href="/EliyahuCohenResume.pdf"
           target="_blank"
@@ -115,10 +122,15 @@ export default function Intro() {
         >
           Download CV
         </Link>
-        <Link href="/EliyahuCohenResume.pdf" className="block mt-5 animate-bounce" target="_blank" download>
+        <Link
+          href="/EliyahuCohenResume.pdf"
+          className="block mt-5 animate-bounce"
+          target="_blank"
+          download
+        >
           <FaChevronDown />
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

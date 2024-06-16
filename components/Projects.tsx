@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import SectionHeading from "./SectionHeading";
 import { projectsData } from "@/lib/data";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsLink45Deg } from "react-icons/bs";
 import { AiOutlineGithub } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 export type ProjectType = (typeof projectsData)[number];
 export type showProps = {
@@ -23,7 +25,7 @@ export default function Projects({ show, limit }: showProps) {
           .filter((_, index) => index < limit - 1)
           .map((project, index) => (
             <React.Fragment key={index}>
-              <Project {...project} />
+              <Project {...project} index={index} />
             </React.Fragment>
           ))}
       </div>
@@ -48,9 +50,15 @@ function Project({
   imageUrl,
   github,
   liveDemo,
-}: ProjectType) {
+  index,
+}: ProjectType & { index: number }) {
   return (
-    <section className="grid gap-5 md:text-left text-center md:grid-cols-2 items-center grid-cols-1 p-3 bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 relative rounded-md ">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: [0, 1] }}
+      transition={{ duration: 1, delay: index * 1 * 0.25 }}
+      className="grid gap-5 md:text-left text-center md:grid-cols-2 items-center grid-cols-1 p-3 bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 relative rounded-md "
+    >
       <div className="absolute top-0 right-0 p-4 flex gap-1">
         {liveDemo ? (
           <Link target="_blank" href={liveDemo}>
@@ -90,6 +98,6 @@ function Project({
         quality={95}
         className="top-8 mx-auto w-[28.25rem] max-h-[30rem] md:translate-x-10 md:translate-y-10 rounded-t-lg shadow-2xl transition block md:rotate-6 md:hover:rotate-0 md:hover:translate-x-0 md:hover:translate-y-0"
       />
-    </section>
+    </motion.section>
   );
 }
