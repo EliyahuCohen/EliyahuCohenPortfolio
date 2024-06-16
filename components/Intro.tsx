@@ -4,7 +4,7 @@ import Logo from "@/public/logo.png";
 import { motion } from "framer-motion";
 import { FaGithubSquare } from "react-icons/fa";
 import { BsArrowRight, BsLinkedin, BsWhatsapp } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
+import { FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Intro() {
@@ -106,6 +106,19 @@ export default function Intro() {
           </a>
         </div>
       </motion.div>
+      <div className="mx-auto flex-col flex w-full items-center justify-center mt-5">
+        <Link
+          href="/EliyahuCohenResume.pdf"
+          target="_blank"
+          download
+          className="group border-2 border-gray-900 text-gray-900 px-7 py-3 flex items-center gap-2 font-semibold rounded-full outline-none  hover:scale-[0.99] active:scale-95 transition "
+        >
+          Download CV
+        </Link>
+        <Link href="/EliyahuCohenResume.pdf" className="block mt-5 animate-bounce" target="_blank" download>
+          <FaChevronDown />
+        </Link>
+      </div>
     </section>
   );
 }
