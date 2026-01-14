@@ -50,9 +50,7 @@ export const resumeData = {
       }
     ],
     education: [],
-  },
-  // Hebrew removed as requested
-  he: { personal: {}, about: "", experience: [], education: [] }
+  }
 } as const
 
 // Re-ordered "Impressive" skills first

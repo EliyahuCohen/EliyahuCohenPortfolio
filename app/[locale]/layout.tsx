@@ -1,19 +1,14 @@
 
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { Inter, Heebo } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "../globals.css";
 import { Metadata } from 'next';
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageLoader } from "@/components/page-loader";
-import { AnimatedBackground } from "@/components/animated-background";
-import { CustomCursor } from "@/components/custom-cursor";
-import SmoothScroll from "@/components/smooth-scroll";
 
 const inter = Inter({ subsets: ["latin"] });
-const heebo = Heebo({ subsets: ["hebrew"] });
 
 export const metadata: Metadata = {
   title: "Eliyahu Cohen | Portfolio",
@@ -24,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'he' }];
+  return [{ locale: 'en' }];
 }
 
 export default async function LocaleLayout({
@@ -36,6 +31,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
+  if (locale !== 'en') {
+    notFound();
+  }
+
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
@@ -43,28 +42,21 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const isHebrew = locale === 'he';
-
   return (
-    <html lang={locale} dir={isHebrew ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={isHebrew ? heebo.className : inter.className}>
+    <html lang={locale} dir="ltr" suppressHydrationWarning>
+      <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
+            enableSystem={false}
             disableTransitionOnChange
           >
-            <SmoothScroll>
-              <PageLoader />
-              <AnimatedBackground />
-              <CustomCursor />
-              <div className="relative flex min-h-screen flex-col">
-                <SiteHeader />
-                <main className="flex-1">{children}</main>
-                <SiteFooter />
-              </div>
-            </SmoothScroll>
+            <div className="relative flex min-h-screen flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
