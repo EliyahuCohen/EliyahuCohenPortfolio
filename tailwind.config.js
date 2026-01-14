@@ -1,49 +1,90 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },colors: {
-        'custom-html': '#e34c26',
-        'custom-css': '#264de4',
-        'custom-javascript': '#f7df1e',
-        'custom-typescript': '#007acc',
-        'custom-react': '#61dafb',
-        'custom-nextjs': '#000000',
-        'custom-nodejs': '#68a063',
-        'custom-git': '#f34f29',
-        'custom-github': '#181717',
-        'custom-tailwind': '#38b2ac',
-        'custom-prisma': '#2d3748',
-        'custom-mongodb': '#47a248',
-        'custom-docker': '#0db7ed',
-        'custom-gitlab': '#fca121',
-        'custom-redux': '#764abc',
-        'custom-sass': '#cc6699',
-        'custom-sanityio': '#f03e2f',
-        'custom-express': '#828282',
-        'custom-firebase': '#ffca28',
-        'custom-socketio': '#010101',
-        'custom-webrtc': '#34a853',
-        'custom-angular': '#dd0330',
-        'custom-bootstrap': '#563d7c',
-        'custom-materialui': '#0081cb',
-        'custom-csharp': '#68217a',
-        'custom-dotnet': '#512bd4',
-        'custom-framermotion': '#e10098',
-        'custom-python': '#306998', // Use the base color as gradient may not be supported
-        'custom-fastapi': '#05998b',
-        'custom-sqlite': '#003b57',
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        lime: {
+          DEFAULT: "#84cc16",
+          50: "#f7fee7",
+          100: "#ecfccb",
+          200: "#d9f99d",
+          300: "#bef264",
+          400: "#a3e635",
+          500: "#84cc16",
+          600: "#65a30d",
+          700: "#4d7c0f",
+          800: "#3f6212",
+          900: "#365314",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

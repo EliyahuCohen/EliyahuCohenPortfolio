@@ -1,34 +1,69 @@
-"use client";
-import SectionHeading from "./SectionHeading";
-import { motion } from "framer-motion";
-export default function About() {
+"use client"
+
+import { useLocale } from "next-intl"
+import { resumeData } from "@/lib/data"
+import { motion } from "framer-motion"
+import { Code2, Rocket, Users } from "lucide-react"
+
+export function About() {
+  const locale = useLocale()
+  const data = resumeData[locale as keyof typeof resumeData]
+
+  const highlights = [
+    {
+      icon: Code2,
+      title: "3.5+ Years",
+      subtitle: "Professional Experience"
+    },
+    {
+      icon: Rocket,
+      title: "Team Lead",
+      subtitle: "Cyber Division, Israel Police"
+    },
+    {
+      icon: Users,
+      title: "Agile Expert",
+      subtitle: "High-Security Clearance"
+    }
+  ]
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
-      className="mb-28 max-w-[55rem] text-center leading-8 mx-auto px-7 "
-    >
-      <SectionHeading heading="About me" />
-      <p className="mb-3">
-        As a software engineering enthusiast, I am on a constant journey of
-        learning and growth. My fascination with Fullstack development has led
-        me to master a core tech stack of React, Next.js, Node.js, and MongoDB.
-        The problem-solving aspect of programming drives my passion, and I find
-        great joy in unraveling complex challenges. Whether {"it's"} building
-        dynamic user interfaces or crafting efficient backend systems, I am
-        dedicated to delivering impactful solutions. Currently seeking new
-        opportunities, I am eager to contribute my expertise and creativity to
-        exciting projects.
-        <p>
-          <span className="italic">When {"I'm"} not coding</span>, I enjoy
-          playing video games, watching movies and play the guitar.
-        </p>
-        <a href="#contact" className="underline">
-          {"Let's"} connect
-        </a>{" "}
-        and explore how I can make a meaningful impact as a software developer.
-      </p>
-    </motion.section>
-  );
+    <section id="about" className="py-24 bg-muted/30">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-6xl font-black uppercase mb-16">
+            About <span className="text-primary">Me</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {highlights.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="border-2 border-border rounded-none p-6 bg-background hover:border-primary transition-all group"
+              >
+                <item.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform" />
+                <h3 className="text-2xl font-black mb-1">{item.title}</h3>
+                <p className="text-muted-foreground">{item.subtitle}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="max-w-3xl">
+            <p className="text-lg leading-relaxed mb-6">
+              {data.about.split('. ').slice(0, 3).join('. ')}.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
 }

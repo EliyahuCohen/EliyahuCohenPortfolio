@@ -1,219 +1,197 @@
-import React from "react";
-import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
-import { LuGraduationCap } from "react-icons/lu";
-import Meta from "@/public/meta.webp";
-import Music from "@/public/music.webp";
-import EC from "@/public/ec.webp";
-import Doc from "@/public/doc.jpg";
-import Word from "@/public/wordle.png";
-import { HiOutlineComputerDesktop } from "react-icons/hi2";
 
 export const links = [
   {
     name: "Home",
-    hash: "/#home",
+    hash: "#",
   },
   {
     name: "About",
-    hash: "/#about",
-  },
-  {
-    name: "Projects",
-    hash: "/#projects",
-  },
-  {
-    name: "Skills",
-    hash: "/#skills",
+    hash: "#about",
   },
   {
     name: "Experience",
-    hash: "/#experience",
+    hash: "#experience",
+  },
+  {
+    name: "Skills",
+    hash: "#skills",
   },
   {
     name: "Contact",
-    hash: "/#contact",
-  },
-] as const;
-
-export const experiencesData = [
-  {
-    title: "Fullstack Developer Team Lead",
-    location: "Israel, Jerusalem",
-    description:
-      "I have served as a developer of advanced technological systems for the entire Israeli Police organization, working in a diverse team on multiple projects simultaneously. I have held the position of Team Lead on various projects and assisted in training team members in designing Fullstack development standards.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2023 - present",
-  },
-  {
-    title: "Full-Stack Developer",
-    location: "Israel, Jerusalem",
-    description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(HiOutlineComputerDesktop),
-    date: "2022 - present",
-  },
-  {
-    title: "Fullstack Developer at Rami Technologies",
-    location: "Israel, Jerusalem",
-    description:
-      "Developed robust applications as a full-stack developer, utilizing React and Node.js. Focused on efficient front-end and back-end solutions, adhering to best practices and modern technologies to enhance user experience.",
-    icon: React.createElement(FaReact),
-    date: "2021 - 2023",
-  },
-  {
-    title: "Graduated Software Engineering",
-    location: "Israel, Jerusalem",
-    description: `
-      I have successfully completed a comprehensive 3.5 years software engineering program, gaining valuable knowledge and skills.
-
-      Now equipped with a strong foundation in software engineering, I'm eager to embark on a fulfilling journey in Fullstack development, contributing to innovative projects and making a positive impact in the tech world.`,
-    icon: React.createElement(LuGraduationCap),
-    date: "2019 - 2023",
-  },
-] as const;
-
-export const projectsData = [
-  {
-    title: "HealthCare App",
-    description:
-      "Health care app with all of the features, from real time messages and video calls, to booking appointments, prescriptions ,Admin mode and more",
-    tags: [
-      "React",
-      "Typescript",
-      "MongoDB",
-      "Sass",
-      "Framer Motion",
-      "Express",
-      "Node.js",
-      "Socket.io",
-      "Redux",
-      "webRTC",
-      "Nodemailer",
-    ],
-    imageUrl: Doc,
-    github: "https://github.com/EliyahuCohen/Doctor-Patient",
-    liveDemo: "",
-  },
-  {
-    title: "Modern UI/UX",
-    description: "A nice little project of modern UI/UX using Next.js",
-    tags: ["React", "Next.js", "Sanity.io", "Tailwind", "Framer Motion"],
-    imageUrl: Meta,
-    github: "https://github.com/EliyahuCohen/METAVERCE-project-UI-UX",
-    liveDemo: "https://metaverce-project-ui-ux.vercel.app/",
-  },
-  {
-    title: "Music App",
-    description:
-      "A personal project build using React.js and RapidAPI Shazam Core API",
-    tags: ["React", "Javascript", "Tailwind", "Redux", "Framer Motion"],
-    imageUrl: Music,
-    github: "https://github.com/EliyahuCohen/-Lyriks-Music-App",
-    liveDemo: "",
-  },
-  {
-    title: "E-commerce App",
-    description:
-      "A simple public web app for a store and products, management and cart.",
-    tags: ["React", "Next.js", "Sanity.io", "Sass", "Framer Motion"],
-    imageUrl: EC,
-    github: "https://github.com/EliyahuCohen/E-commerce",
-    liveDemo: "",
-  },
-  {
-    title: "Wordle Game",
-    description: "A nice public (cloned) web app for the popular game Wordle.",
-    tags: [
-      "React",
-      "Javascript",
-      "Custom Hooks",
-      "Context",
-      "CSS",
-      "Framer Motion",
-    ],
-    imageUrl: Word,
-    github: "https://github.com/EliyahuCohen/Wordle-Game",
-    liveDemo: "https://eliyahu-wordle-game.netlify.app/",
+    hash: "#contact",
   },
 ] as const;
 
 export const skillsData = [
-  { name: "HTML", color: "hover:text-custom-html" },
-  { name: "CSS", color: "hover:text-custom-css" },
-  { name: "JavaScript", color: "hover:text-custom-javascript" },
-  { name: "TypeScript", color: "hover:text-custom-typescript" },
-  { name: "React", color: "hover:text-custom-react" },
-  { name: "Next.js", color: "hover:text-custom-nextjs" },
-  { name: "Node.js", color: "hover:text-custom-nodejs" },
-  { name: "Git", color: "hover:text-custom-git" },
-  { name: "GitHub", color: "hover:text-custom-github" },
-  { name: "Tailwind CSS", color: "hover:text-custom-tailwind" },
-  { name: "Prisma", color: "hover:text-custom-prisma" },
-  { name: "MongoDB", color: "hover:text-custom-mongodb" },
-  { name: "Docker", color: "hover:text-custom-docker" },
-  { name: "GitLab", color: "hover:text-custom-gitlab" },
-  { name: "Redux", color: "hover:text-custom-redux" },
-  { name: "shadcn/ui", color: "hover:text-custom-black" },
-  { name: "Sass", color: "hover:text-custom-sass" },
-  { name: "Sanity.io", color: "hover:text-custom-sanityio" },
-  { name: "Express", color: "hover:text-custom-express" },
-  { name: "Firebase", color: "hover:text-custom-firebase" },
-  { name: "Socket.io", color: "hover:text-custom-socketio" },
-  { name: "Python", color: "hover:text-custom-python" },
-  { name: "FastAPI", color: "hover:text-custom-fastapi" },
-  { name: "SQLite", color: "hover:text-custom-sqlite" },
-  { name: "webRTC", color: "hover:text-custom-webrtc" },
-  { name: "Angular", color: "hover:text-custom-angular" },
-  { name: "Bootstrap", color: "hover:text-custom-bootstrap" },
-  { name: "MaterialUi", color: "hover:text-custom-materialui" },
-  { name: "C#", color: "hover:text-custom-csharp" },
-  { name: ".NET", color: "hover:text-custom-dotnet" },
-  { name: "Framer Motion", color: "hover:text-custom-framermotion" },
+  "Python",
+  "JavaScript",
+  "TypeScript",
+  "HTML",
+  "CSS/SCSS",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "Redux",
+  "Zustand",
+  "Socket.io",
+  "FastAPI",
+  "RabbitMQ",
+  "Microservices",
+  "Tailwind CSS",
+  "shadcn/ui",
+  "MUI",
+  "SQL",
+  "MongoDB",
+  "SQLite",
+  "PostgreSQL",
+  "Firebase",
+  "Git",
+  "GitHub",
+  "GitLab",
+  "GitHub Actions",
+  "Docker",
+  "Nginx",
+  "SSH",
+  "JIRA",
+  "GCP",
+  "Slack",
+  "Framer Motion",
 ] as const;
 
 export const resumeData = {
-  contact: {
-    phone: "058-5669183",
-    email: "eliyahutrab@gmail.com",
-    portfolio: "https://eliyahu-cohen-portfolio.vercel.app",
-    address: "Ramat Shlomo, Jerusalem",
+  en: {
+    personal: {
+      name: "Eliyahu Cohen",
+      title: "Team Lead & Fullstack Engineer",
+      phone: "058-5669183",
+      email: "eliyahutrab@gmail.com",
+      address: "Ramat Shlomo, Jerusalem",
+      id: "212128102",
+    },
+    about: "As a software engineering enthusiast, I am on a constant journey of learning and growth. My fascination with Fullstack development has led me to master a core tech stack including React, Next.js, Node.js, and MongoDB. The problem-solving aspect of programming drives my passion, and I find great joy in unraveling complex challenges. Whether it's building dynamic user interfaces or crafting efficient backend systems, I am dedicated to delivering impactful solutions. When I'm not coding, I enjoy playing video games, watching movies, and playing the guitar.",
+    experience: [
+      {
+        title: "Team Lead & Fullstack Engineer",
+        company: "Israel Police - Cyber Division",
+        date: "2023 - Present",
+        description: [
+          "Managing and leading end-to-end technology projects, from initiation to implementation",
+          "Gathering requirements, mapping customer needs, writing specifications",
+          "Managing user testing and integration with internal/external stakeholders",
+          "Managing employees – task delegation, schedule monitoring",
+          "Building timelines and risk management",
+          "Working in Agile methodology with high-level security clearance"
+        ]
+      },
+      {
+        title: "Software Developer",
+        company: "Rami Technologies",
+        date: "2021 - 2023",
+        description: [
+          "Implementation of solutions according to specifications",
+          "Worked in an Agile team, meeting schedules",
+          "Developed in advanced environments using microservices (K8s, Docker, Node.js, Typescript)"
+        ]
+      },
+      {
+        title: "Fullstack Freelancer",
+        company: "Self Employed",
+        date: "2020 - 2021",
+        description: [
+          "Developed and maintained Fullstack systems for various clients",
+          "Customized unique software solutions including bug fixes and upgrades",
+          "Worked independently with clients, maintaining communication"
+        ]
+      }
+    ],
+    education: [
+      {
+        degree: "Software Engineering",
+        institution: "Jerusalem College of Professional Training",
+        date: "2019 - 2022",
+        note: "12 years of schooling with full matriculation diploma"
+      }
+    ],
+    skills: {
+      languages: ["Hebrew (Native)", "English (High proficiency)"],
+      programming: ["Python", "Javascript", "Typescript", "HTML", "CSS/SCSS"],
+      databases: ["SQL", "MongoDB", "SQLite", "PostgreSQL", "Firebase"],
+      tools: ["Node.js", "Express", "React", "Next.js", "Redux", "Zustand", "Socket.io", "FastAPI", "RabbitMQ", "Microservices", "Tailwind CSS", "ShadcnUI", "MUI", "Git", "Docker", "Nginx", "JIRA", "GCP"]
+    },
+    volunteering: [
+      {
+        role: "Perach Project",
+        description: "Mentoring and guiding high school students in computer science and algorithms",
+        date: "2019 - 2020"
+      }
+    ]
   },
-  education: [
-    {
-      degree: "Software Engineering",
-      institution: "H'amichlala Lhachshara Miktzoit",
-      location: "Israel, Jerusalem",
-      date: "2020 - 2023",
+  he: {
+    personal: {
+      name: "אליהו כהן",
+      title: "ראש צוות פיתוח",
+      phone: "058-5669183",
+      email: "eliyahutrab@gmail.com",
+      address: "רמת שלמה, ירושלים",
+      id: "212128102",
     },
-  ],
-  languages: ["English", "Hebrew"],
-  workExperience: [
-    {
-      title: "Fullstack Developer Team Lead",
-      company: "Police Cyber Unit",
-      location: "Israel, Jerusalem",
-      date: "2023 - present",
-      description:
-        "I have served as a developer of advanced technological systems for the entire Israeli Police organization, working in a diverse team on multiple projects simultaneously. I have held the position of Team Lead on various projects and assisted in training team members in designing Fullstack development standards.",
+    about: "כחובב הנדסת תוכנה, אני במסע מתמיד של למידה וצמיחה. הקסם שלי מפיתוח Fullstack הוביל אותי לשלוט בסטק טכנולוגי מרכזי הכולל React, Next.js, Node.js ו-MongoDB. היבט פתרון הבעיות של תכנות מניע את התשוקה שלי, ואני מוצא שמחה רבה בפתרון אתגרים מורכבים. בין אם מדובר בבניית ממשקי משתמש דינמיים או יצירת מערכות backend יעילות, אני מחויב למסירת פתרונות משמעותיים. כשאני לא מתכנת, אני נהנה לשחק משחקי וידאו, לצפות בסרטים ולנגן בגיטרה.",
+    experience: [
+      {
+        title: "ראש צוות פיתוח",
+        company: "חטיבת הסייבר משטרת ישראל",
+        date: "2023 - היום",
+        description: [
+          "ניהול והובלת פרויקטים טכנולוגיים מקצה לקצה, החל משלב הייזום ועד הטמעה",
+          "איסוף וכתיבת דרישות, מיפוי צורכי לקוח, אפיון עסקי וטכני",
+          "ניהול בדיקות משתמשים ואינטגרציה מול ממשקים בארגון ומחוצה לו",
+          "ניהול עובדים – חלוקת משימות, מעקב לו\"ז, ישיבות סטטוס",
+          "בניית לו\"ז וניהול סיכונים",
+          "עבודה בשיטת Agile עם סיווג בטחוני גבוה"
+        ]
+      },
+      {
+        title: "מפתח תוכנה",
+        company: "רמי טכנולוגיות",
+        date: "2021 - 2023",
+        description: [
+          "יישום פתרונות בהתאם לאפיון, פיתוח, בדיקות ותיעוד טכני",
+          "עבודה בצוות Agile, עמידה ביעדי לו\"ז",
+          "פיתוח בסביבות מיקרוסרוויסים (Docker, K8s, Node.js, TypeScript)"
+        ]
+      },
+      {
+        title: "Fullstack Freelancer",
+        company: "עצמאי",
+        date: "2020 - 2021",
+        description: [
+          "פיתוח ותחזוקת מערכות Fullstack עבור לקוחות שונים",
+          "התאמת פתרונות ייחודיים, תיקוני תקלות ושדרוגים",
+          "עבודה עצמאית מול לקוחות והבנת צרכים עסקיים"
+        ]
+      }
+    ],
+    education: [
+      {
+        degree: "הנדסת תוכנה",
+        institution: "המכללה להכשרה מקצועית ירושלים",
+        date: "2019 - 2022",
+        note: "12 שנות לימוד ובגרות מלאה"
+      }
+    ],
+    skills: {
+      languages: ["עברית (שפת אם)", "אנגלית (רמה גבוהה)"],
+      programming: ["Python", "Javascript", "Typescript", "HTML", "CSS/SCSS"],
+      databases: ["SQL", "MongoDB", "SQLite", "PostgreSQL", "Firebase"],
+      tools: ["Node.js", "Express", "React", "Next.js", "Redux", "Zustand", "Socket.io", "FastAPI", "RabbitMQ", "Microservices", "Tailwind CSS", "ShadcnUI", "MUI", "Git", "Docker", "Nginx", "JIRA", "GCP"]
     },
-    {
-      title: "Fullstack Developer",
-      company: "Rami Technologies",
-      location: "Israel, Jerusalem",
-      date: "2021 - 2023",
-      description:
-        "Developed robust applications as a full-stack developer, utilizing React and Node.js. Focused on efficient front-end and back-end solutions, adhering to best practices and modern technologies to enhance user experience.",
-    },
-    {
-      title: "Freelance Web Developer",
-      location: "Israel, Jerusalem",
-      date: "2021 - present",
-      description:
-        "Crafting visually appealing websites with flawless functionality, integrating captivating design with strong backend and frontend development.",
-    },
-  ],
-  skills: skillsData,
-  profile:
-    "Experienced software engineer with expertise in Front-end and Full-stack development. Dedicated to continuous improvement and passionate about delivering efficient solutions. Seeking opportunities to contribute skills and enhance team success.",
-};
+    volunteering: [
+      {
+        role: "פרויקט פר\"ח",
+        description: "הנחייה וליווי תלמידי תיכון במחשבים ואלגוריתמיקה",
+        date: "2019 - 2020"
+      }
+    ]
+  }
+} as const;

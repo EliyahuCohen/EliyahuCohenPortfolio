@@ -1,0 +1,17 @@
+{
+    "Nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About",
+        "contact": "Contact",
+        "toggleTheme": "Toggle theme",
+        "switchLocale": "Switch to Hebrew"
+    },
+    "Hero": {
+        "title": "Welcome",
+        "cta": "View Projects"
+    },
+    "Footer": {
+        "rights": "All rights reserved."
+    }
+}
