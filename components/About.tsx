@@ -1,68 +1,91 @@
 "use client"
 
+import { useRef, useLayoutEffect } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useLocale } from "next-intl"
 import { resumeData } from "@/lib/data"
-import { motion } from "framer-motion"
-import { Code2, Rocket, Users } from "lucide-react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export function About() {
   const locale = useLocale()
   const data = resumeData[locale as keyof typeof resumeData]
+  const containerRef = useRef<HTMLElement>(null)
+  const paragraphRef = useRef<HTMLParagraphElement>(null)
 
-  const highlights = [
-    {
-      icon: Code2,
-      title: "3.5+ Years",
-      subtitle: "Professional Experience"
-    },
-    {
-      icon: Rocket,
-      title: "Team Lead",
-      subtitle: "Cyber Division, Israel Police"
-    },
-    {
-      icon: Users,
-      title: "Agile Expert",
-      subtitle: "High-Security Clearance"
-    }
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Split text animation simply by opacity on lines
+      // Since we don't have SplitText plugin (paid), we'll do word/line stagger manually or simpler
+
+      gsap.fromTo(paragraphRef.current,
+        { autoAlpha: 0.2, y: 50 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+          }
+        }
+      )
+
+      // Parallax for highlight items
+      gsap.utils.toArray(".about-stat").forEach((stat: any, i) => {
+        gsap.from(stat, {
+          y: 100 * (i + 1),
+          opacity: 0,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom center",
+            scrub: 1,
+          }
+        })
+      })
+
+    }, containerRef)
+    return () => ctx.revert()
+  }, [])
+
+  const stats = [
+    { label: "Experience", value: "3.5y" },
+    { label: "Role", value: "Lead" },
+    { label: "Mode", value: "Agile" },
   ]
 
   return (
-    <section id="about" className="py-24 bg-muted/30">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-6xl font-black uppercase mb-16">
-            About <span className="text-primary">Me</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="border-2 border-border rounded-none p-6 bg-background hover:border-primary transition-all group"
-              >
-                <item.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl font-black mb-1">{item.title}</h3>
-                <p className="text-muted-foreground">{item.subtitle}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="max-w-3xl">
-            <p className="text-lg leading-relaxed mb-6">
-              {data.about.split('. ').slice(0, 3).join('. ')}.
+    <section ref={containerRef} className="min-h-screen flex flex-col justify-center py-20 bg-background relative z-10">
+      <div className="container px-4 md:px-20">
+        <div className="flex flex-col md:flex-row gap-20 items-start">
+          <div className="flex-1">
+            <h2 className="text-sm font-mono text-primary mb-10 uppercase tracking-widest">
+              / Who I Am
+            </h2>
+            <p
+              ref={paragraphRef}
+              className="text-4xl md:text-6xl font-black leading-tight will-change-transform"
+            >
+              {data.about.split('.')[0]}.<br />
+              <span className="text-muted-foreground">
+                {data.about.split('.')[1]}.
+              </span>
             </p>
           </div>
-        </motion.div>
+
+          <div className="flex flex-col gap-10 md:pt-40">
+            {stats.map((stat, i) => (
+              <div key={i} className="about-stat border-t border-primary/20 pt-4 w-40">
+                <div className="text-4xl font-black text-primary">{stat.value}</div>
+                <div className="text-sm font-mono text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

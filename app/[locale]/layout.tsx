@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageLoader } from "@/components/page-loader";
 import { AnimatedBackground } from "@/components/animated-background";
 import { CustomCursor } from "@/components/custom-cursor";
+import SmoothScroll from "@/components/smooth-scroll";
 
 const inter = Inter({ subsets: ["latin"] });
 const heebo = Heebo({ subsets: ["hebrew"] });
@@ -54,14 +55,16 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <PageLoader />
-            <AnimatedBackground />
-            <CustomCursor />
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
-            </div>
+            <SmoothScroll>
+              <PageLoader />
+              <AnimatedBackground />
+              <CustomCursor />
+              <div className="relative flex min-h-screen flex-col">
+                <SiteHeader />
+                <main className="flex-1">{children}</main>
+                <SiteFooter />
+              </div>
+            </SmoothScroll>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

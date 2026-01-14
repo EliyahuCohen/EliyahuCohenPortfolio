@@ -1,146 +1,67 @@
 "use client"
 
-import { useLocale } from "next-intl"
-import { resumeData } from "@/lib/data"
-import { useRef, useEffect } from "react"
+import { useRef, useLayoutEffect } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
+import { resumeData } from "@/lib/data"
 
 export function Timeline() {
-    const locale = useLocale()
-    const data = resumeData[locale as keyof typeof resumeData]
-    const sectionRef = useRef<HTMLElement>(null)
-    const experienceRefs = useRef<HTMLDivElement[]>([])
+    const data = resumeData.en // Forced English
+    const containerRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        if (!sectionRef.current) return
-
-        experienceRefs.current.forEach((exp, index) => {
-            if (!exp) return
-
-            // Pin each experience while scrolling through it
-            ScrollTrigger.create({
-                trigger: exp,
-                start: "top top+=100",
-                end: "bottom top+=200",
-                pin: false,
-                onEnter: () => {
-                    gsap.to(exp, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.6,
-                        ease: "power3.out"
-                    })
-                },
-                onLeave: () => {
-                    gsap.to(exp, {
-                        scale: 0.95,
-                        opacity: 0.5,
-                        duration: 0.6
-                    })
-                },
-                onEnterBack: () => {
-                    gsap.to(exp, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.6
-                    })
-                },
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const rows = document.querySelectorAll(".job-row")
+            rows.forEach((row) => {
+                row.addEventListener("mouseenter", () => {
+                    gsap.to(row, { backgroundColor: "rgba(255,255,255,0.05)", duration: 0.3 })
+                    gsap.to(row.querySelector(".job-desc"), { height: "auto", opacity: 1, duration: 0.4 })
+                })
+                row.addEventListener("mouseleave", () => {
+                    gsap.to(row, { backgroundColor: "transparent", duration: 0.3 })
+                    gsap.to(row.querySelector(".job-desc"), { height: 0, opacity: 0, duration: 0.3 })
+                })
             })
-        })
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-        }
+        }, containerRef)
+        return () => ctx.revert()
     }, [])
 
     return (
-        <section id="experience" ref={sectionRef} className="min-h-screen py-32">
-            <div className="container">
-                <h2 className="text-[15vw] md:text-[12vw] font-black leading-none mb-20">
-                    JOURNEY
-                </h2>
+        <section ref={containerRef} className="py-24 container px-6">
+            <h2 className="text-sm font-mono uppercase tracking-widest border-b border-white/10 pb-4 mb-10 text-neutral-500">
+                JOURNEY
+            </h2>
 
-                <div className="space-y-32 max-w-5xl">
-                    {data.experience.map((exp, index) => (
-                        <div
-                            key={index}
-                            ref={(el) => {
-                                if (el) experienceRefs.current[index] = el
-                            }}
-                            className="relative"
-                        >
-                            {/* Year - Large */}
-                            <div className="text-8xl md:text-9xl font-black text-primary/10 mb-4">
-                                {exp.date.split(' - ')[0]}
+            <div className="flex flex-col border-t border-white/10">
+                {data.experience.map((exp, i) => (
+                    <div
+                        key={i}
+                        className="job-row group flex flex-col py-12 border-b border-white/10 cursor-pointer transition-colors relative"
+                    >
+                        <div className="flex flex-col md:flex-row justify-between md:items-baseline mb-4">
+                            <div className="md:w-1/4 mb-2 md:mb-0">
+                                <span className="font-mono text-primary text-xl font-bold">{exp.date}</span>
                             </div>
-
-                            {/* Content */}
-                            <div className="grid md:grid-cols-2 gap-8">
-                                <div>
-                                    <h3 className="text-3xl md:text-5xl font-black mb-2 leading-tight">
-                                        {exp.title}
-                                    </h3>
-                                    <p className="text-xl md:text-2xl text-primary font-bold">
-                                        {exp.company}
-                                    </p>
-                                </div>
-
-                                <div className="space-y-3">
-                                    {exp.description.slice(0, 3).map((desc, i) => (
-                                        <p key={i} className="text-muted-foreground leading-relaxed">
-                                            {desc}
-                                        </p>
-                                    ))}
-                                </div>
+                            <div className="md:w-3/4">
+                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 pl-0 md:pl-0 transition-all duration-300">
+                                    {exp.title}
+                                </h3>
+                                <p className="text-xl text-neutral-400 mb-2">{exp.company}</p>
                             </div>
-
-                            {/* Divider */}
-                            {index < data.experience.length - 1 && (
-                                <div className="absolute -bottom-16 left-0 w-full h-px bg-border" />
-                            )}
                         </div>
-                    ))}
 
-                    {/* Education */}
-                    {data.education.map((edu, index) => {
-                        const totalIndex = data.experience.length + index
-                        return (
-                            <div
-                                key={totalIndex}
-                                ref={(el) => {
-                                    if (el) experienceRefs.current[totalIndex] = el
-                                }}
-                                className="relative"
-                            >
-                                <div className="text-8xl md:text-9xl font-black text-primary/10 mb-4">
-                                    {edu.date.split(' - ')[0]}
-                                </div>
+                        <div className="job-desc h-0 opacity-0 overflow-hidden md:pl-[25%] max-w-4xl">
+                            <ul className="pt-4 space-y-2 text-neutral-400/80">
+                                {exp.description.map((desc, d) => (
+                                    <li key={d} className="flex items-start gap-3">
+                                        <span className="leading-relaxed text-sm md:text-base">{desc}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div>
-                                        <h3 className="text-3xl md:text-5xl font-black mb-2 leading-tight">
-                                            {edu.degree}
-                                        </h3>
-                                        <p className="text-xl md:text-2xl text-primary font-bold">
-                                            {edu.institution}
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        {edu.note && (
-                                            <p className="text-muted-foreground leading-relaxed">
-                                                {edu.note}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                    </div>
+                ))}
             </div>
         </section>
     )

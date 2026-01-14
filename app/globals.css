@@ -4,76 +4,138 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 0 0% 6%;
+    /* #0f0f0f */
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 84 81% 44%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 15 100% 50%;
+    /* #FF3300 - Initial Color */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
-
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 84 81% 44%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 84 81% 44%;
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 0 0% 10%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 10%;
+    --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 0 0% 10%;
+    --accent: 15 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 84 81% 44%;
+    --ring: 15 100% 50%;
+
+    --radius: 0rem;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "salt";
+    animation: colorCycle 60s infinite linear;
   }
+}
+
+/* Slow Global Color Cycle */
+@keyframes colorCycle {
+  0% {
+    --primary: 15 100% 50%;
+    /* Orange */
+  }
+
+  25% {
+    --primary: 280 100% 60%;
+    /* Purple */
+  }
+
+  50% {
+    --primary: 190 100% 50%;
+    /* Cyan */
+  }
+
+  75% {
+    --primary: 140 100% 50%;
+    /* Green */
+  }
+
+  100% {
+    --primary: 15 100% 50%;
+    /* Loop back to Orange */
+  }
+}
+
+/* Ensure custom properties work by redefining utility hook if needed, 
+   but since Tailwind generates static CSS, we might need a workaround for dynamic --primary. 
+   Actually, HSL/RGB variable manipulation is better. 
+   Tailwind uses `hsl(var(--primary))`. So we animate the HSL value? 
+   No, we animate the variable `--primary` content? CSS cannot animate custom property contents easily unless registered.
+   
+   Better workaround: Hue Rotate Filter on body or specific elements? No, that shifts everything.
+   
+   Best modern way: @property (CSS Houdini).
+*/
+
+@property --hue {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --hue: 15deg;
+}
+
+body {
+  animation: hueRotate 60s infinite linear;
+}
+
+@keyframes hueRotate {
+  0% {
+    --hue: 15deg;
+  }
+
+  /* Orange */
+  100% {
+    --hue: 375deg;
+  }
+
+  /* Cycle */
+}
+
+/* We override the --primary variable to use this dynamic hue */
+:root {
+  /* Saturation 100%, Lightness 50% fixed */
+  --primary: var(--hue) 100% 50%;
+}
+
+/* Scrollbar/Lenis override */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

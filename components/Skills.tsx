@@ -1,100 +1,79 @@
 "use client"
 
 import { skillsData } from "@/lib/data"
-import { useRef, useEffect, useState } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
-  useEffect(() => {
-    if (!sectionRef.current || !gridRef.current) return
-
-    const skills = gridRef.current.children
-
-    // Stagger reveal on scroll
-    gsap.fromTo(
-      skills,
-      {
-        opacity: 0,
-        scale: 0.8,
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.4,
-        stagger: {
-          amount: 1,
-          from: "random",
-        },
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top center+=100",
-          toggleActions: "play none none reverse",
-        },
-      }
-    )
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
+  // Triple the list to ensure seamless looping without gaps
+  const skillsList = [...skillsData, ...skillsData, ...skillsData]
 
   return (
-    <section id="skills" ref={sectionRef} className="min-h-screen py-32 relative">
-      <div className="container">
-        {/* Large title on the side */}
-        <div className="mb-20">
-          <h2 className="text-[15vw] md:text-[12vw] font-black leading-none">
-            SKILLS
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground mt-4 max-w-2xl">
-            Technologies I've mastered building production-grade systems
-          </p>
-        </div>
+    <section className="py-32 relative z-10 bg-white text-black overflow-hidden flex flex-col justify-center min-h-[50vh]">
 
-        {/* Masonry-style Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3"
-        >
-          {skillsData.map((skill, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`
-                relative bg-card border-2 border-border hover:border-primary 
-                p-4 md:p-6 rounded-none cursor-pointer transition-all duration-300
-                ${hoveredIndex === index ? 'scale-110 z-10 shadow-xl' : ''}
-                ${index % 7 === 0 ? 'md:col-span-2' : ''}
-                ${index % 11 === 0 ? 'md:row-span-2' : ''}
-              `}
-            >
-              <div className={`
-                font-mono font-bold text-sm md:text-base
-                ${hoveredIndex === index ? 'text-primary' : ''}
-                transition-colors duration-300
-              `}>
-                {skill}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Skill count */}
-        <div className="mt-16 text-center">
-          <p className="text-6xl md:text-8xl font-black text-primary/20">
-            {skillsData.length}+
-          </p>
-          <p className="text-muted-foreground text-lg">Technologies Mastered</p>
-        </div>
+      <div className="container px-6 mb-12 relative z-10">
+        <h2 className="text-sm font-mono uppercase tracking-widest border-b border-black/10 pb-4">
+          Capabilities
+        </h2>
       </div>
+
+      <div className="flex flex-col gap-10 relative z-10 mix-blend-hard-light">
+
+        {/* Row 1 - Left Marquee */}
+        <div className="marquee-container overflow-hidden whitespace-nowrap flex">
+          <div className="marquee-content animate-marquee flex gap-8">
+            {skillsList.map((skill, i) => (
+              <span
+                key={`r1-${i}`}
+                className="text-[6vw] font-black tracking-tighter leading-none opacity-80 hover:text-primary transition-colors cursor-default"
+                style={{ willChange: "transform" }}
+              >
+                {skill.toUpperCase()}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 - Right Marquee (Reverse) */}
+        <div className="marquee-container overflow-hidden whitespace-nowrap flex">
+          <div className="marquee-content animate-marquee-reverse flex gap-8">
+            {skillsList.map((skill, i) => (
+              <span
+                key={`r2-${i}`}
+                className="text-[6vw] font-black tracking-tighter leading-none text-transparent stroke-text-black opacity-60 hover:stroke-primary hover:opacity-100 transition-colors cursor-default"
+                style={{ willChange: "transform" }}
+              >
+                {skill.toUpperCase()}
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <div className="absolute inset-0 bg-[url('/grid-black.svg')] opacity-5 pointer-events-none" />
+
+      <style jsx global>{`
+        .stroke-text-black {
+            -webkit-text-stroke: 2px black;
+        }
+
+        .animate-marquee {
+            animation: marquee 60s linear infinite;
+        }
+        
+        .animate-marquee-reverse {
+            animation: marquee 60s linear infinite reverse;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* Hover Pause/Slow Effect */
+        .marquee-container:hover .marquee-content {
+             animation-play-state: paused;
+        }
+      `}</style>
     </section>
   )
 }
