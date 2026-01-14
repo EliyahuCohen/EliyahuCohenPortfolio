@@ -36,7 +36,7 @@ export function Timeline() {
                 {data.experience.map((exp, i) => (
                     <div
                         key={i}
-                        className="job-row group flex flex-col py-12 border-b border-white/10 cursor-pointer transition-colors relative"
+                        className="job-row group flex flex-col py-12 px-0 hover:px-6 md:hover:px-10 border-b border-white/10 cursor-pointer transition-all duration-500 relative"
                     >
                         <div className="flex flex-col md:flex-row justify-between md:items-baseline mb-4">
                             <div className="md:w-1/4 mb-2 md:mb-0">
@@ -50,10 +50,13 @@ export function Timeline() {
                             </div>
                         </div>
 
-                        <div className="job-desc h-0 opacity-0 overflow-hidden md:pl-[25%] max-w-4xl">
-                            <ul className="pt-4 space-y-2 text-neutral-400/80">
+                        <div
+                            className="job-desc h-0 opacity-0 overflow-hidden md:pl-[25%] max-w-4xl transition-all duration-500"
+                        >
+                            <ul className="pt-10 pb-4 space-y-3 text-neutral-400/80">
                                 {exp.description.map((desc, d) => (
-                                    <li key={d} className="flex items-start gap-3">
+                                    <li key={d} className="flex items-start gap-4">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0 group-hover:bg-primary transition-colors" />
                                         <span className="leading-relaxed text-sm md:text-base">{desc}</span>
                                     </li>
                                 ))}

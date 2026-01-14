@@ -1,5 +1,3 @@
-import { Projects } from "@/components/Projects";
-import ScrollTo from "@/components/ScrollTo";
 import { Metadata } from "next";
 import React from "react";
 
@@ -33,7 +31,7 @@ export default function ProjectsPage() {
   return (
     <div className="container py-12">
       <h1 className="text-4xl font-bold mb-8">All Projects</h1>
-      <Projects />
+      <ProjectsPage />
     </div>
   );
 }

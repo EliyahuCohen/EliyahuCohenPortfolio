@@ -1,12 +1,12 @@
 
 import { Hero } from "@/components/Hero";
-import { Timeline } from "@/components/Timeline";
 import Skills from "@/components/Skills";
-import { Contact } from "@/components/Contact";
 import { CustomCursor } from "@/components/custom-cursor";
 import { PageLoader } from "@/components/page-loader";
 import { WarpSpeed } from "@/components/warp-speed";
 import SmoothScroll from "@/components/smooth-scroll";
+import { Timeline } from "@/components/Timeline";
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   return (
