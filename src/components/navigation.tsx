@@ -1,62 +1,54 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
-import { Controls } from "@/components/controls";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
+// Same quiet, centered nav as the landing page; it only gains a soft blur once the page scrolls.
 export function Navigation() {
   const pathname = usePathname();
-  const ref = useRef<HTMLElement>(null);
-  const [isIntersecting, setIntersecting] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header ref={ref}>
-      <div
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b backdrop-blur duration-200",
-          isIntersecting ? "border-transparent bg-transparent" : "border-border bg-background/60",
-        )}
-      >
-        <div className="container mx-auto flex items-center justify-between gap-4 p-4 sm:p-6">
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="text-muted-foreground duration-200 hover:text-foreground"
-          >
-            <ArrowLeft className="size-6" />
-          </Link>
-          <div className="flex items-center gap-4 sm:gap-8">
-            <nav className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
-              {links.map(({ href, label }) => (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled ? "bg-background/70 backdrop-blur-md" : "bg-transparent",
+      )}
+    >
+      <div className="relative flex h-16 items-center justify-center px-4 sm:h-20">
+        <nav>
+          <ul className="flex items-center gap-6">
+            {links.map(({ href, label }) => (
+              <li key={href}>
                 <Link
-                  key={href}
                   href={href}
                   aria-current={pathname === href ? "page" : undefined}
-                  className="text-muted-foreground duration-200 hover:text-foreground aria-[current=page]:text-foreground"
+                  className="text-sm text-muted-foreground duration-500 hover:text-foreground aria-[current=page]:text-foreground"
                 >
                   {label}
                 </Link>
-              ))}
-            </nav>
-            <Controls />
-          </div>
-        </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <ThemeToggle className="absolute end-4 sm:end-6" />
       </div>
     </header>
   );
