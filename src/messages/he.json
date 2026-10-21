@@ -1,0 +1,48 @@
+{
+  "Meta": {
+    "title": "אליהו כהן",
+    "description": "מהנדס Fullstack בכיר וראש צוות. TypeScript, Node.js, React, Next.js, PostgreSQL, Docker ו-GCP."
+  },
+  "Nav": {
+    "resume": "קורות חיים",
+    "contact": "יצירת קשר",
+    "back": "חזרה לדף הבית",
+    "cv": "הורדת קורות חיים"
+  },
+  "Controls": {
+    "toggleTheme": "החלפת ערכת צבעים",
+    "light": "בהיר",
+    "dark": "כהה",
+    "system": "לפי המערכת",
+    "language": "החלפת שפה",
+    "switchTo": "English"
+  },
+  "Home": {
+    "name": "אליהו כהן",
+    "tagline": "מהנדס Fullstack בכיר וראש צוות ב<org></org>. אני בונה מערכות פרודקשן מקצה לקצה, ממסד הנתונים ועד הממשק.",
+    "org": "חטיבת הסייבר של משטרת ישראל"
+  },
+  "Contact": {
+    "title": "יצירת קשר",
+    "email": "אימייל",
+    "linkedin": "לינקדאין",
+    "github": "גיטהאב",
+    "phone": "טלפון"
+  },
+  "NotFound": {
+    "title": "הדף לא נמצא",
+    "back": "חזרה לדף הבית"
+  },
+  "Resume": {
+    "title": "קורות חיים",
+    "description": "יותר מ-6 שנות ניסיון בבניית מערכות פרודקשן מקצה לקצה, מתכנון מסדי נתונים ושירותי צד שרת ועד ממשקי React, תשתיות ענן ו-CI/CD.",
+    "summary": "תקציר",
+    "skills": "כישורים",
+    "education": "השכלה",
+    "volunteering": "התנדבות",
+    "languages": "שפות",
+    "clearance": "סיווג ביטחוני גבוה (בתוקף)",
+    "present": "היום",
+    "experience": "ניסיון תעסוקתי"
+  }
+}
