@@ -65,8 +65,8 @@
 }
 
 @theme inline {
-  --font-sans: "Inter Variable", "Heebo Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cal Sans", "Heebo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cal Sans", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -138,13 +138,6 @@
   ::selection {
     @apply bg-foreground/15;
   }
-}
-
-/* Unlayered so it beats the font-display utility: Cal Sans has no Hebrew glyphs,
-   so Hebrew headings use Heebo throughout instead of mixing fonts. */
-[dir="rtl"] .font-display {
-  font-family: "Heebo Variable", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 700;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,17 +1,19 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { Controls } from "@/components/controls";
-import { Link, usePathname } from "@/i18n/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const links = ["resume", "contact"] as const;
+const links = [
+  { href: "/resume", label: "Resume" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
 export function Navigation() {
-  const t = useTranslations("Nav");
   const pathname = usePathname();
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
@@ -34,21 +36,21 @@ export function Navigation() {
         <div className="container mx-auto flex items-center justify-between gap-4 p-4 sm:p-6">
           <Link
             href="/"
-            aria-label={t("back")}
+            aria-label="Back to home"
             className="text-muted-foreground duration-200 hover:text-foreground"
           >
-            <ArrowLeft className="size-6 rtl:rotate-180" />
+            <ArrowLeft className="size-6" />
           </Link>
           <div className="flex items-center gap-4 sm:gap-8">
             <nav className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
-              {links.map((key) => (
+              {links.map(({ href, label }) => (
                 <Link
-                  key={key}
-                  href={`/${key}`}
-                  aria-current={pathname === `/${key}` ? "page" : undefined}
+                  key={href}
+                  href={href}
+                  aria-current={pathname === href ? "page" : undefined}
                   className="text-muted-foreground duration-200 hover:text-foreground aria-[current=page]:text-foreground"
                 >
-                  {t(key)}
+                  {label}
                 </Link>
               ))}
             </nav>

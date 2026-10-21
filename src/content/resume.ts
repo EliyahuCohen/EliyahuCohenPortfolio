@@ -1,5 +1,3 @@
-import type { Locale } from "@/i18n/routing";
-
 export type Role = {
   title: string;
   company: string;
@@ -100,71 +98,4 @@ const en: Resume = {
   languages: ["Hebrew (native)", "English (high proficiency)"],
 };
 
-const he: Resume = {
-  role: "מהנדס Fullstack בכיר",
-  org: "חטיבת הסייבר של משטרת ישראל",
-  location: "ירושלים / תל אביב",
-  summary:
-    "מהנדס Fullstack בכיר עם יותר מ-6 שנות ניסיון בבניית מערכות פרודקשן מקצה לקצה: מתכנון מסדי נתונים ושירותי צד שרת, דרך ממשקי React ו-Next.js ועד תשתיות ענן ו-CI/CD. מתמחה באקוסיסטם של TypeScript (Node.js, NestJS, Express, React, Next.js) עם PostgreSQL, Docker ו-GCP. בניתי מערכות ארציות לשירות הציבור בחטיבת הסייבר של משטרת ישראל, כולל מוצרים מבוססי AI, תוך הובלת צוות של 12 מהנדסים.",
-  experience: [
-    {
-      title: "ראש צוות ומהנדס Fullstack בכיר",
-      company: "חטיבת הסייבר, משטרת ישראל",
-      period: "2023 – היום",
-      highlights: [
-        "תכננתי ופיתחתי מערכת תלונות ארצית מבוססת AI שמאפשרת לכל אזרח להגיש תלונה בכל תחנות המשטרה בארץ, עם אווטאר AI חי, יכולות LLM, תשתית GCP ושילוב שירותי ממשל זמין (Gov.il).",
-        "תכננתי ובניתי מאפס מערכת חיצונית למיון וסינון מועמדים למשטרת ישראל.",
-        "הטמעתי ניטור ב-GCP עם התראות אוטומטיות ותהליכי CI/CD, שמאפשרים העלאת תיקונים לפרודקשן במהירות ובבטחה.",
-        "מוביל צוות של 12 מהנדסים תוך כתיבת קוד ב-50–100% מהזמן; אחראי על החלטות ארכיטקטורה ו-Code Review.",
-        "חונך מהנדסים בעזרת מדריכי קליטה וחפיפות מסודרות; מתרגם דרישות לאפיון טכני ומנהל בדיקות משתמשים לפני עלייה לפרודקשן.",
-      ],
-      stack,
-    },
-    {
-      title: "מפתח תוכנה",
-      company: "Rami Technologies",
-      period: "2021 – 2023",
-      highlights: [
-        "פיתחתי מיקרו-שירותים בצד השרת לפלטפורמת אגריטק שמזהה מצבי שטח חקלאי כמו עקת יובש ובריאות עצים.",
-        "עבדתי בסביבת מיקרו-שירותים בקונטיינרים עם Node.js, TypeScript, Docker ו-Kubernetes.",
-        "פיתחתי פיצ'רים לפי אפיון, כולל בדיקות ותיעוד טכני, כחלק מצוות Agile.",
-      ],
-      stack: ["Node.js", "TypeScript", "Docker", "Kubernetes"],
-    },
-    {
-      title: "מפתח Fullstack (פרילנס)",
-      company: "עצמאי",
-      period: "2020 – 2021",
-      highlights: [
-        "תכננתי, בניתי ותחזקתי מערכות Fullstack למגוון לקוחות, בהתאמה לכל עסק ולדרישות המשתנות.",
-        "ניהלתי את הקשר עם הלקוח מקצה לקצה: דרישות, מסירה, תיקוני באגים ושדרוגים באוויר.",
-      ],
-    },
-  ],
-  skills: [
-    { label: "שפות תכנות", items: skills.languages },
-    { label: "צד שרת", items: skills.backend },
-    { label: "צד לקוח", items: skills.frontend },
-    { label: "מסדי נתונים", items: skills.databases },
-    { label: "ענן ו-DevOps", items: skills.devops },
-    { label: "בינה מלאכותית", items: skills.ai },
-  ],
-  education: [
-    {
-      title: "הנדסאי תוכנה",
-      school: "המכללה הירושלמית להכשרה מקצועית",
-      period: "2019 – 2022",
-      note: "תעודת בגרות מלאה",
-    },
-  ],
-  volunteering: [
-    {
-      title: "חונך בפרויקט פר\"ח",
-      org: "מדעי המחשב ואלגוריתמים לתלמידי תיכון",
-      period: "2019 – 2020",
-    },
-  ],
-  languages: ["עברית (שפת אם)", "אנגלית (רמה גבוהה)"],
-};
-
-export const resume: Record<Locale, Resume> = { en, he };
+export const resume = en;

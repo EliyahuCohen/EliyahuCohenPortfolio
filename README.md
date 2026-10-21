@@ -8,7 +8,6 @@ Live: https://eliyahu-cohen-portfolio.vercel.app
 
 - Next.js 16 (App Router, static generation) + React 19 + TypeScript
 - Tailwind CSS 4 + shadcn/ui (new-york, zinc)
-- next-intl: English (default, served at `/`) and Hebrew (`/he`, right-to-left)
 - next-themes: light, dark and system themes
 - motion for the spotlight cards; a canvas particle field on the home page
 
@@ -22,8 +21,7 @@ Live: https://eliyahu-cohen-portfolio.vercel.app
 
 ## Editing content
 
-- Resume content for both languages: `src/content/resume.ts`
-- UI strings: `src/messages/en.json`, `src/messages/he.json`
+- Resume content: `src/content/resume.ts`
 - Contact links, site URL and CV path: `src/lib/site.ts`
 - Downloadable CV: `public/Eliyahu-Cohen-CV.pdf`
 

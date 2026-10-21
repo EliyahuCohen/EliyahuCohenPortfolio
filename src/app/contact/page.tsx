@@ -1,39 +1,30 @@
 import { Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { use } from "react";
 
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 import { Navigation } from "@/components/navigation";
 import { SpotlightCard } from "@/components/spotlight-card";
-import type { Locale } from "@/i18n/routing";
-import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/contact">): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale: locale as Locale, namespace: "Contact" });
-  return pageMetadata(locale as Locale, "/contact", t("title"));
-}
+export const metadata: Metadata = {
+  title: "Contact",
+  alternates: { canonical: "/contact" },
+};
 
 const socials = [
-  { key: "email", icon: <Mail size={20} />, href: `mailto:${siteConfig.email}`, handle: siteConfig.email },
-  { key: "linkedin", icon: <LinkedInIcon className="size-5" />, href: siteConfig.linkedin, handle: siteConfig.linkedinHandle },
-  { key: "github", icon: <GitHubIcon className="size-5" />, href: siteConfig.github, handle: siteConfig.githubHandle },
-  { key: "phone", icon: <Phone size={20} />, href: `tel:${siteConfig.phone}`, handle: siteConfig.phoneDisplay },
+  { key: "email", label: "Email", icon: <Mail size={20} />, href: `mailto:${siteConfig.email}`, handle: siteConfig.email },
+  { key: "linkedin", label: "LinkedIn", icon: <LinkedInIcon className="size-5" />, href: siteConfig.linkedin, handle: siteConfig.linkedinHandle },
+  { key: "github", label: "GitHub", icon: <GitHubIcon className="size-5" />, href: siteConfig.github, handle: siteConfig.githubHandle },
+  { key: "phone", label: "Phone", icon: <Phone size={20} />, href: `tel:${siteConfig.phone}`, handle: siteConfig.phoneDisplay },
 ] as const;
 
-export default function ContactPage({ params }: PageProps<"/[locale]/contact">) {
-  const { locale } = use(params);
-  setRequestLocale(locale as Locale);
-  const t = useTranslations("Contact");
+export default function ContactPage() {
 
   return (
     <div>
       <Navigation />
       <main className="container mx-auto flex min-h-screen items-center justify-center px-4 py-28">
-        <h1 className="sr-only">{t("title")}</h1>
+        <h1 className="sr-only">Contact</h1>
         <div className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {socials.map((s) => (
             <SpotlightCard key={s.key}>
@@ -53,12 +44,11 @@ export default function ContactPage({ params }: PageProps<"/[locale]/contact">) 
                 <div className="z-10 flex flex-col items-center">
                   <span
                     className="text-center font-display text-base break-all text-foreground/90 duration-150 group-hover:text-foreground xl:text-lg"
-                    dir="ltr"
                   >
                     {s.handle}
                   </span>
                   <span className="mt-4 text-center text-sm text-muted-foreground duration-1000 group-hover:text-foreground/80">
-                    {t(s.key)}
+                    {s.label}
                   </span>
                 </div>
               </a>
