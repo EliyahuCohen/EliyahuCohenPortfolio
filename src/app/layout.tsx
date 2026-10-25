@@ -9,12 +9,12 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
+  title: { default: `${siteConfig.name} | Senior Fullstack Engineer`, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: siteConfig.name,
+    title: `${siteConfig.name} | Senior Fullstack Engineer`,
     description: siteConfig.description,
     url: "/",
     siteName: siteConfig.name,
