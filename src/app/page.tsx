@@ -10,9 +10,25 @@ const navigation = [
   { href: "/contact", label: "Contact" },
 ];
 
+// Tells Google this page is the profile for the name, so it is the result
+// shown for a name search rather than a subpage or the CV.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: "Senior Fullstack Engineer",
+  email: `mailto:${siteConfig.email}`,
+  sameAs: [siteConfig.github, siteConfig.linkedin],
+};
+
 export default function Home() {
   return (
     <div className="relative flex h-dvh w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-tl from-background via-zinc-400/20 to-background dark:via-zinc-600/20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <ThemeToggle className="absolute end-4 top-4 z-20 animate-fade-in sm:end-6 sm:top-6" />
       <nav className="relative z-10 my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
